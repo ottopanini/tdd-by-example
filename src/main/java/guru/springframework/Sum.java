@@ -10,8 +10,13 @@ public class Sum implements Expression {
     }
 
     @Override
+    public Expression times(int multiplier) {
+        return new Sum(augmend.times(multiplier), addmend.times(multiplier));
+    }
+
+    @Override
     public Expression plus(Expression addmend) {
-        return null;
+        return new Sum(this, addmend);
     }
 
     public Money reduce(Bank bank, String to) {
