@@ -35,11 +35,12 @@ public class Money implements Expression {
                 '}';
     }
 
-    public Money times(int multiplier) {
+    public Expression times(int multiplier) {
         return new Money(amount * multiplier, currency);
     }
 
-    public Expression plus(Money addmend) {
+    @Override
+    public Expression plus(Expression addmend) {
         return new Sum(this, addmend);
     }
 
